@@ -1,10 +1,10 @@
 from datetime import date
 
-SEARCH_URL = "http://miniweb.imbc.com/Music/Search"
-PROGRAM_CODE = {'music_camp': 'RAMFM300'}
-
 
 class MusicCamp:
+    SEARCH_URL = "http://miniweb.imbc.com/Music/Search"
+    PROGRAM_CODE = {'music_camp': 'RAMFM300'}
+
     def __init__(self):
         pass
 
