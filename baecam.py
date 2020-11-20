@@ -1,4 +1,22 @@
+import enum
 from datetime import date
+
+import requests
+
+
+class AutoValuedEnum(enum.Enum):
+    def __str__(self):
+        return str(self.value)
+
+
+class ProgramCode(AutoValuedEnum):
+    MUSIC_CAMP = 'RAMFM300'
+
+
+class SearchType(AutoValuedEnum):
+    TITLE = 1
+    SINGER = 2
+    SONG = 3
 
 
 class MusicCamp:
