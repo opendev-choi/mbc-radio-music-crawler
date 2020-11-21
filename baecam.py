@@ -32,7 +32,7 @@ class MusicCamp:
         pass
 
     def get_music_list(self, search_date: date = date.today(), program_code: ProgramCode = ProgramCode.MUSIC_CAMP):
-        return self._search_music_list_code_by_date(search_date, program_code)
+        return self._search_music_list_ids_by_date(search_date, program_code)
 
     def _search_music_list_ids_by_date(self, search_date: date, program_code: ProgramCode, page: int = 1) \
             -> MusicListIds:
