@@ -55,7 +55,7 @@ class MusicCamp:
             music_list_ids[td.a.get_text()] = parse_qs(query_url)['seqID'][0]
 
         if self.ID_PER_PAGE == len(music_list_ids):
-            return music_list_ids | self._search_music_list_ids_by_date(date, program_code, page + 1)
+            return music_list_ids | self._search_music_list_ids_by_date(search_date, program_code, page + 1)
         else:
             return music_list_ids
 
