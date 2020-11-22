@@ -36,7 +36,7 @@ class MusicCamp:
     LIST_URL = "http://miniweb.imbc.com/Music/View"
     ID_PER_PAGE = 10
 
-    def get_music_list(self, search_date: date = date.today(), program_code: ProgramCode = ProgramCode.MUSIC_CAMP):
+    def get_music_list_by_date(self, search_date: date = date.today(), program_code: ProgramCode = ProgramCode.MUSIC_CAMP):
         pass
 
     def _search_music_list_ids_by_date(self, search_date: date, program_code: ProgramCode, page: int = 1) \
