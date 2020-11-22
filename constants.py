@@ -24,3 +24,7 @@ class SearchType(AutoValuedEnum):
     TITLE = 1
     SINGER = 2
     SONG = 3
+
+
+class NoSearchResultException(Exception):
+    pass

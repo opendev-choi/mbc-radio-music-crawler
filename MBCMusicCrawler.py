@@ -4,7 +4,7 @@ from urllib.parse import parse_qs
 import requests
 from bs4 import BeautifulSoup
 
-from constants import MusicListIds, SearchType, Music, ProgramCode
+from constants import MusicListIds, SearchType, Music, ProgramCode, NoSearchResultException
 
 
 class MusicCamp:
@@ -16,6 +16,8 @@ class MusicCamp:
                                program_code: ProgramCode = ProgramCode.MUSIC_CAMP) -> list[Music]:
         music_list: list[Music] = []
         music_list_ids = self._search_music_list_ids_by_date(search_date, program_code)
+        if len(music_list_ids) == 0:
+            raise NoSearchResultException("No Search result at '{d.year}년 {d.month}월 {d.day}일'".format(d=search_date))
 
         for title, music_list_id in music_list_ids.items():
             music_list += self._get_music_list_by_id(music_list_id, program_code)
