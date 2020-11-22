@@ -1,12 +1,19 @@
 import enum
 from datetime import date
 from urllib.parse import parse_qs
+from dataclasses import dataclass
 
 import requests
 from bs4 import BeautifulSoup
 
 
 MusicListIds = dict[str, str]
+
+
+@dataclass
+class Music:
+    title: str = 'Songs'
+    singer: str = 'Various Artists'
 
 
 class AutoValuedEnum(enum.Enum):
@@ -26,13 +33,11 @@ class SearchType(AutoValuedEnum):
 
 class MusicCamp:
     SEARCH_URL = "http://miniweb.imbc.com/Music/Search"
+    LIST_URL = "http://miniweb.imbc.com/Music/View"
     ID_PER_PAGE = 10
 
-    def __init__(self):
-        pass
-
     def get_music_list(self, search_date: date = date.today(), program_code: ProgramCode = ProgramCode.MUSIC_CAMP):
-        return self._search_music_list_ids_by_date(search_date, program_code)
+        pass
 
     def _search_music_list_ids_by_date(self, search_date: date, program_code: ProgramCode, page: int = 1) \
             -> MusicListIds:
@@ -59,8 +64,25 @@ class MusicCamp:
         else:
             return music_list_ids
 
-    def _get_music_list(self):
-        pass
+    def _get_music_list(self, music_list_id: str, program_code: ProgramCode) -> list[Music]:
+        music_list: list[Music] = []
+        get_parameters = {
+            'progCode': program_code,
+            'seqID': music_list_id
+        }
+        response = requests.get(self.LIST_URL, params=get_parameters)
+        parsed_response = BeautifulSoup(response.text, "html.parser")
 
-    def _get_program_code_from_query(self, ):
-        pass
+        for tr in parsed_response.table.find_all('tr'):
+            music = Music()
+            for td in tr.find_all('td'):
+                if td.p:
+                    if td.p['class'][0] == 'title':
+                        music.title = td.p.text
+                    elif td.p['class'][0] == 'singer':
+                        music.singer = td.p.text
+
+                        music_list.append(music)
+                        music = Music()
+
+        return music_list
