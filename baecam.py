@@ -36,8 +36,15 @@ class MusicCamp:
     LIST_URL = "http://miniweb.imbc.com/Music/View"
     ID_PER_PAGE = 10
 
-    def get_music_list_by_date(self, search_date: date = date.today(), program_code: ProgramCode = ProgramCode.MUSIC_CAMP):
-        pass
+    def get_music_list_by_date(self, search_date: date = date.today(),
+                               program_code: ProgramCode = ProgramCode.MUSIC_CAMP) -> list[Music]:
+        music_list: list[Music] = []
+        music_list_ids = self._search_music_list_ids_by_date(search_date, program_code)
+
+        for title, music_list_id in music_list_ids.items():
+            music_list += self._get_music_list_by_id(music_list_id, program_code)
+
+        return music_list
 
     def _search_music_list_ids_by_date(self, search_date: date, program_code: ProgramCode, page: int = 1) \
             -> MusicListIds:
