@@ -4,7 +4,7 @@ from urllib.parse import parse_qs
 import requests
 from bs4 import BeautifulSoup
 
-from constants import MusicListIds, SearchType, Music, ProgramCode, NoSearchResultException
+from MBCMusicCrawler.constants import MusicListIds, SearchType, Music, ProgramCode, NoSearchResultException
 
 
 class MusicCamp:
