@@ -64,7 +64,7 @@ class MusicCamp:
         else:
             return music_list_ids
 
-    def _get_music_list(self, music_list_id: str, program_code: ProgramCode) -> list[Music]:
+    def _get_music_list_by_id(self, music_list_id: str, program_code: ProgramCode) -> list[Music]:
         music_list: list[Music] = []
         get_parameters = {
             'progCode': program_code,
