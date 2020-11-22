@@ -4,10 +4,10 @@ from urllib.parse import parse_qs
 import requests
 from bs4 import BeautifulSoup
 
-from MBCMusicCrawler.constants import MusicListIds, SearchType, Music, ProgramCode, NoSearchResultException
+from mbcmusiccrawler.constants import MusicListIds, SearchType, Music, ProgramCode, NoSearchResultException
 
 
-class MusicCamp:
+class MBCMusicCrawler:
     SEARCH_URL = "http://miniweb.imbc.com/Music/Search"
     LIST_URL = "http://miniweb.imbc.com/Music/View"
     ID_PER_PAGE = 10
