@@ -3,7 +3,8 @@ from unittest import TestCase
 from unittest.mock import patch, PropertyMock
 
 from mbcmusiccrawler.MBCMusicCrawler import MBCMusicCrawler, ProgramCode
-from tests.constants import ONE_MUSIC_LIST_ID_HTML, ONE_PAGE_MUSIC_LIST_ID_HTML, MANY_PAGE_MUSIC_LIST_ID_HTML
+from tests.constants import ONE_MUSIC_LIST_ID_HTML, ONE_PAGE_MUSIC_LIST_ID_HTML, \
+    MANY_PAGE_MUSIC_LIST_ID_HTML, MUSIC_LIST_HTML, TWO_MUSIC_LIST_ID_HTML
 
 
 class MusicCrawlerTest(TestCase):
@@ -32,7 +33,11 @@ class MusicCrawlerTest(TestCase):
         self.assertEqual(mocked_requests.call_count, 3)
 
     def test_parse_music_id_list_from_page(self):
-        pass
+        result = self.music_crawler._parse_music_id_list_from_page(TWO_MUSIC_LIST_ID_HTML)
+
+        self.assertEqual(result['2020년 11월 24일 선곡표'], '1')
+        self.assertEqual(result['2020년 11월 23일 선곡표'], '2')
+        self.assertEqual(len(result), 2)
 
     def test_parse_music_list_from_page(self):
         pass

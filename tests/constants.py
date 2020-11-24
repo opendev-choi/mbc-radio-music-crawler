@@ -6,6 +6,15 @@ ONE_MUSIC_LIST_ID_HTML = """<div id="musicWrap">
     </table>
 </div>"""
 
+TWO_MUSIC_LIST_ID_HTML = """<div id="musicWrap">
+    <table>
+        <tbody>
+            <td><a href="page?seqID=1">2020년 11월 24일 선곡표</a></td>
+            <td><a href="page?seqID=2">2020년 11월 23일 선곡표</a></td>
+        </tbody>
+    </table>
+</div>"""
+
 ONE_PAGE_MUSIC_LIST_ID_HTML = ["""<div id="musicWrap">
     <table>
         <tbody>
