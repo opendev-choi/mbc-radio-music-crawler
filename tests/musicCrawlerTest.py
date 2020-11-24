@@ -40,4 +40,13 @@ class MusicCrawlerTest(TestCase):
         self.assertEqual(len(result), 2)
 
     def test_parse_music_list_from_page(self):
-        pass
+        result = self.music_crawler._parse_music_list_from_page(MUSIC_LIST_HTML)
+        self.assertEqual(len(result), 2)
+
+        # Gypsy King
+        self.assertEqual(result[0].title, 'Volare')
+        self.assertEqual(result[0].singer, 'Gypsy King')
+
+        # The Jackson 5
+        self.assertEqual(result[1].title, 'I Want You Back')
+        self.assertEqual(result[1].singer, 'The Jackson 5')

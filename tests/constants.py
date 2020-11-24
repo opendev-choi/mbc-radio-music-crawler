@@ -82,3 +82,14 @@ MANY_PAGE_MUSIC_LIST_ID_HTML = ["""<div id="musicWrap">
     </table>
 </div>"""
 ]
+
+MUSIC_LIST_HTML = """<table>
+    <tr>
+        <td><p class="title">Volare</p></td>
+        <td><p class="singer">Gypsy King</p></td>
+    </tr>
+    <tr>
+        <td><p class="title">I Want You Back</p></td>
+        <td><p class="singer">The Jackson 5</p></td>
+    </tr>
+</table>"""
