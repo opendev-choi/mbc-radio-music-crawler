@@ -23,6 +23,14 @@ class MusicCrawlerTest(TestCase):
 
         self.assertEqual(len(result), 10)
         self.assertEqual(mocked_requests.call_count, 2)
+
+    @patch('requests.post', side_effect=[PropertyMock(text=html) for html in MANY_PAGE_MUSIC_LIST_ID_HTML])
+    def test_search_many_page_music_list_ids(self, mocked_requests):
+        result = self.music_crawler._search_music_list_ids_by_date(date.today(), ProgramCode.MUSIC_CAMP)
+
+        self.assertEqual(len(result), 28)
+        self.assertEqual(mocked_requests.call_count, 3)
+
     def test_parse_music_id_list_from_page(self):
         pass
 
